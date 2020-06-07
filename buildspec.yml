@@ -1,14 +1,12 @@
 version: 0.2
 
 phases:
-#  build:
-#    commands:
-#      - docker build .
+  build:
+    commands:
+      - docker build -t myapp_build --target builder .
+      - docker build -t myapp
   post_build:
     commands:
-      - echo `ls`
-      - echo `pwd`
-      - echo $CODEBUILD_SRC_DIR
-#      - echo Build completed on `date`
-
-artifacts:
+      - docker run -it myapp_build bash -c "go test"
+      - echo "done!"
+#      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
