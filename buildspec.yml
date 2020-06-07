@@ -3,7 +3,7 @@ version: 0.2
 phases:
   build:
     commands:
-      - docker build -t myapp_build --target builder .
+      - docker build -t myapp_build #--target builder .
       - docker run -it myapp_build #bash -c "go test"
   #      - docker build -t myapp
   post_build:
