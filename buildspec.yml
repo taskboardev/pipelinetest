@@ -4,9 +4,9 @@ phases:
   build:
     commands:
       - docker build -t myapp_build --target builder .
-#      - docker build -t myapp
+      - docker run -it myapp_build bash -c "go test"
+  #      - docker build -t myapp
   post_build:
     commands:
-      - docker run -it myapp_build bash -c "go test"
       - echo "done!"
 #      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
