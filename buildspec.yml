@@ -1,9 +1,14 @@
 version: 0.2
 
 phases:
-  build:
-    commands:
-      - docker build .
+#  build:
+#    commands:
+#      - docker build .
   post_build:
     commands:
-      - echo Build completed on `date`
+      - echo `ls`
+      - echo `pwd`
+      - echo $CODEBUILD_SRC_DIR
+#      - echo Build completed on `date`
+
+artifacts:
