@@ -1,6 +1,6 @@
 FROM golang:latest as builder
 WORKDIR /app
-COPY server .
+COPY server-go .
 RUN go mod download && CGO_ENABLED=0 GOOS=linux go build main.go
 
 FROM alpine:latest
